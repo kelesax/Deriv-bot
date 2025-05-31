@@ -1,0 +1,525 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html:xml xmlns:html="http://www.w3.org/1999/xhtml" collection="false">
+  <html:variables>
+    <html:variable type="" id=";$ZQf`P.{Nfj2%cf$U~+">Max Loss Amount</html:variable>
+    <html:variable type="" id="WuqZ(;^TtAw=X%TxBc~A">RSI</html:variable>
+    <html:variable type="" id="pt@?n}1RFe6_3h7^k:LX">Expected Profit</html:variable>
+    <html:variable type="" id="1i4q,zqdJs--)bl5UdlM">Initial Amount</html:variable>
+    <html:variable type="" id="[:*sc!{S6gRB/,L5Q9?)">Win Amount</html:variable>
+    <html:variable type="" id="lzx0~Gt[).=D3HH-:@Hq">STOCH-30</html:variable>
+    <html:variable type="" id="^Jm)?(EFDhSb/ZPPiU8@">STOCH-70</html:variable>
+  </html:variables>
+  <html:block type="trade" id="73vWdDagX-YhN)CtN.3D" x="320" y="-314">
+    <html:field name="MARKET_LIST">volidx</html:field>
+    <html:field name="SUBMARKET_LIST">random_index</html:field>
+    <html:field name="SYMBOL_LIST">R_100</html:field>
+    <html:field name="TRADETYPECAT_LIST">callput</html:field>
+    <html:field name="TRADETYPE_LIST">risefall</html:field>
+    <html:field name="TYPE_LIST">both</html:field>
+    <html:field name="CANDLEINTERVAL_LIST">60</html:field>
+    <html:field name="TIME_MACHINE_ENABLED">FALSE</html:field>
+    <html:field name="RESTARTONERROR">TRUE</html:field>
+    <html:statement name="INITIALIZATION">
+      <html:block type="variables_set" id="XDMYoip}{3uMJ$~,Wa(K">
+        <html:field name="VAR" id=";$ZQf`P.{Nfj2%cf$U~+" variabletype="">Max Loss Amount</html:field>
+        <html:value name="VALUE">
+          <html:block type="math_number" id="P!2=P_+S,MKLQTjA]xg(">
+            <html:field name="NUM">50</html:field>
+          </html:block>
+        </html:value>
+        <html:next>
+          <html:block type="variables_set" id="dqduY+F]dYVC%/;)_QyX">
+            <html:field name="VAR" id="pt@?n}1RFe6_3h7^k:LX" variabletype="">Expected Profit</html:field>
+            <html:value name="VALUE">
+              <html:block type="math_number" id="pGL%0jCRlD;R_i-Q:?jz">
+                <html:field name="NUM">10</html:field>
+              </html:block>
+            </html:value>
+            <html:next>
+              <html:block type="variables_set" id="cG;6qVzC4dU[J9h%wYdK">
+                <html:field name="VAR" id="[:*sc!{S6gRB/,L5Q9?)" variabletype="">Win Amount</html:field>
+                <html:value name="VALUE">
+                  <html:block type="math_number" id="?UMlJ9?s?=7*h-CIL?Hv">
+                    <html:field name="NUM">0.4</html:field>
+                  </html:block>
+                </html:value>
+                <html:next>
+                  <html:block type="variables_set" id="(GqO!$8|aP4T+(5lW(^E">
+                    <html:field name="VAR" id="1i4q,zqdJs--)bl5UdlM" variabletype="">Initial Amount</html:field>
+                    <html:value name="VALUE">
+                      <html:block type="math_number" id="dI_3Be9-$EK_$F=d.7w#">
+                        <html:field name="NUM">0.4</html:field>
+                      </html:block>
+                    </html:value>
+                  </html:block>
+                </html:next>
+              </html:block>
+            </html:next>
+          </html:block>
+        </html:next>
+      </html:block>
+    </html:statement>
+    <html:statement name="SUBMARKET">
+      <html:block type="tradeOptions" id="XKd#y9I}aKa_0=M7KeHr">
+        <html:field name="DURATIONTYPE_LIST">t</html:field>
+        <html:field name="CURRENCY_LIST">USD</html:field>
+        <html:value name="DURATION">
+          <html:block type="math_number" id="0p-bjjEuB1k(LNWLaiS]">
+            <html:field name="NUM">5</html:field>
+          </html:block>
+        </html:value>
+        <html:value name="AMOUNT">
+          <html:block type="variables_get" id="p+TPBS;7,b0?9`GtSOmc">
+            <html:field name="VAR" id="1i4q,zqdJs--)bl5UdlM" variabletype="">Initial Amount</html:field>
+          </html:block>
+        </html:value>
+      </html:block>
+    </html:statement>
+  </html:block>
+  <html:block type="before_purchase" id="tOc)]Xd=cAm0aiy+-8(8" x="114" y="-37">
+    <html:statement name="BEFOREPURCHASE_STACK">
+      <html:block type="variables_set" id=",k3e|97Q#zy~St|},FIw">
+        <html:field name="VAR" id="WuqZ(;^TtAw=X%TxBc~A" variabletype="">RSI</html:field>
+        <html:value name="VALUE">
+          <html:block type="rsi" id="L`@9^C8dP8t_eY~kc`z@">
+            <html:value name="INPUT">
+              <html:block type="ticks" id="e_~L}YnK/hM,^s,0#.S_" />
+            </html:value>
+            <html:value name="PERIOD">
+              <html:block type="math_number" id="M`iwUevPD`7AM;@a_lxL">
+                <html:field name="NUM">14</html:field>
+              </html:block>
+            </html:value>
+          </html:block>
+        </html:value>
+        <html:next>
+          <html:block type="notify" id="d6hoYghe$|5gGM!Uw4^E">
+            <html:field name="NOTIFICATION_TYPE">success</html:field>
+            <html:field name="NOTIFICATION_SOUND">silent</html:field>
+            <html:value name="MESSAGE">
+              <html:block type="text_join" id="0}QaY20UMMh`;6uUyJJV">
+                <html:mutation items="2" />
+                <html:value name="ADD0">
+                  <html:block type="text" id="rycoAM.70-1g2W0KNs9N">
+                    <html:field name="TEXT">RSI: </html:field>
+                  </html:block>
+                </html:value>
+                <html:value name="ADD1">
+                  <html:block type="variables_get" id="@6r^:%J(M%u/C:m.1,np">
+                    <html:field name="VAR" id="WuqZ(;^TtAw=X%TxBc~A" variabletype="">RSI</html:field>
+                  </html:block>
+                </html:value>
+              </html:block>
+            </html:value>
+            <html:next>
+              <html:block type="variables_set" id="|O~uOx%R7xcXppR?f`0b">
+                <html:field name="VAR" id="lzx0~Gt[).=D3HH-:@Hq" variabletype="">STOCH-30</html:field>
+                <html:value name="VALUE">
+                  <html:block type="sma" id="SVtn?+`LI=VF}/:;4Xi~">
+                    <html:value name="INPUT">
+                      <html:block type="ticks" id="{vkLe{6=5y[lg-e78du-" />
+                    </html:value>
+                    <html:value name="PERIOD">
+                      <html:block type="math_number" id="miPlsN(tNs-gs02@5b,V">
+                        <html:field name="NUM">30</html:field>
+                      </html:block>
+                    </html:value>
+                  </html:block>
+                </html:value>
+                <html:next>
+                  <html:block type="variables_set" id="x^dKV).m-X,_`wO3_P|B">
+                    <html:field name="VAR" id="^Jm)?(EFDhSb/ZPPiU8@" variabletype="">STOCH-70</html:field>
+                    <html:value name="VALUE">
+                      <html:block type="sma" id="|k/rV=Y_hp}=_`lXTrP~">
+                        <html:value name="INPUT">
+                          <html:block type="ticks" id="acMN79.ka*:5_LLNaSU*" />
+                        </html:value>
+                        <html:value name="PERIOD">
+                          <html:block type="math_number" id="6k@oz]7%X[Pv4iT)ha9+">
+                            <html:field name="NUM">70</html:field>
+                          </html:block>
+                        </html:value>
+                      </html:block>
+                    </html:value>
+                    <html:next>
+                      <html:block type="notify" id="YTilMY%f.=g5dhsR3T@?">
+                        <html:field name="NOTIFICATION_TYPE">success</html:field>
+                        <html:field name="NOTIFICATION_SOUND">silent</html:field>
+                        <html:value name="MESSAGE">
+                          <html:block type="text_join" id="#b:RO#7etH4xMVhO=bCn">
+                            <html:mutation items="2" />
+                            <html:value name="ADD0">
+                              <html:block type="text" id="7`JfSZD.Y^T0/.Gs:Xj+">
+                                <html:field name="TEXT">Stoch-30</html:field>
+                              </html:block>
+                            </html:value>
+                            <html:value name="ADD1">
+                              <html:block type="variables_get" id="90H,l_6UyCM59a_(WM$4">
+                                <html:field name="VAR" id="lzx0~Gt[).=D3HH-:@Hq" variabletype="">STOCH-30</html:field>
+                              </html:block>
+                            </html:value>
+                          </html:block>
+                        </html:value>
+                        <html:next>
+                          <html:block type="notify" id="@Fa-Y;|o:*%fvUQA!?W)">
+                            <html:field name="NOTIFICATION_TYPE">success</html:field>
+                            <html:field name="NOTIFICATION_SOUND">silent</html:field>
+                            <html:value name="MESSAGE">
+                              <html:block type="text_join" id="BdteIk9hD=Z|90O:4h#;">
+                                <html:mutation items="2" />
+                                <html:value name="ADD0">
+                                  <html:block type="text" id="c]KlAx42[gFHCwr%.4e|">
+                                    <html:field name="TEXT">Stoch-70</html:field>
+                                  </html:block>
+                                </html:value>
+                                <html:value name="ADD1">
+                                  <html:block type="variables_get" id="aYMpAhw8+#rK-+1r7d[f">
+                                    <html:field name="VAR" id="^Jm)?(EFDhSb/ZPPiU8@" variabletype="">STOCH-70</html:field>
+                                  </html:block>
+                                </html:value>
+                              </html:block>
+                            </html:value>
+                            <html:next>
+                              <html:block type="controls_if" id="X.`yb]NDRgu016t`QrCR">
+                                <html:value name="IF0">
+                                  <html:block type="logic_operation" id="}y!=rAW}Z7nrD7UQSX!.">
+                                    <html:field name="OP">AND</html:field>
+                                    <html:value name="A">
+                                      <html:block type="logic_compare" id="!Qz_[~7Hl92y]o?o5t9`">
+                                        <html:field name="OP">GT</html:field>
+                                        <html:value name="A">
+                                          <html:block type="variables_get" id="Z^eJiuJdzwZz,#aoH*MV">
+                                            <html:field name="VAR" id="WuqZ(;^TtAw=X%TxBc~A" variabletype="">RSI</html:field>
+                                          </html:block>
+                                        </html:value>
+                                        <html:value name="B">
+                                          <html:block type="math_number" id="qK~DW]c=xEHa*c,pVtw{">
+                                            <html:field name="NUM">65</html:field>
+                                          </html:block>
+                                        </html:value>
+                                      </html:block>
+                                    </html:value>
+                                    <html:value name="B">
+                                      <html:block type="logic_operation" id="f40fEoU}m|Ng/g3mS/9K">
+                                        <html:field name="OP">AND</html:field>
+                                        <html:value name="A">
+                                          <html:block type="logic_compare" id="/Jhcimg|Jv$$mXxTv-:#">
+                                            <html:field name="OP">GT</html:field>
+                                            <html:value name="A">
+                                              <html:block type="tick" id="1$4t__g3os)TtFK^Q7x." />
+                                            </html:value>
+                                            <html:value name="B">
+                                              <html:block type="variables_get" id="|4M1A{n+tkW(xX_GA{]:">
+                                                <html:field name="VAR" id="lzx0~Gt[).=D3HH-:@Hq" variabletype="">STOCH-30</html:field>
+                                              </html:block>
+                                            </html:value>
+                                          </html:block>
+                                        </html:value>
+                                        <html:value name="B">
+                                          <html:block type="logic_compare" id="GG~)*Lte2ZmpgWDG38!/">
+                                            <html:field name="OP">GT</html:field>
+                                            <html:value name="A">
+                                              <html:block type="variables_get" id="yC/TpRuT#7w0An:tB,%$">
+                                                <html:field name="VAR" id="lzx0~Gt[).=D3HH-:@Hq" variabletype="">STOCH-30</html:field>
+                                              </html:block>
+                                            </html:value>
+                                            <html:value name="B">
+                                              <html:block type="variables_get" id="8a7vFAedyjF0}(Bc5F[g">
+                                                <html:field name="VAR" id="^Jm)?(EFDhSb/ZPPiU8@" variabletype="">STOCH-70</html:field>
+                                              </html:block>
+                                            </html:value>
+                                          </html:block>
+                                        </html:value>
+                                      </html:block>
+                                    </html:value>
+                                  </html:block>
+                                </html:value>
+                                <html:statement name="DO0">
+                                  <html:block type="purchase" id="Q;`vp48|v7pG%t@W6`uQ">
+                                    <html:field name="PURCHASE_LIST">CALL</html:field>
+                                  </html:block>
+                                </html:statement>
+                                <html:next>
+                                  <html:block type="controls_if" id="pO(E9d|PDsQH6m_3|:Ma">
+                                    <html:value name="IF0">
+                                      <html:block type="logic_operation" id="*{._jf|90P1OVMh:s04N">
+                                        <html:field name="OP">AND</html:field>
+                                        <html:value name="A">
+                                          <html:block type="logic_compare" id="@wkP.ES}*fN?LvxfOn{F">
+                                            <html:field name="OP">LT</html:field>
+                                            <html:value name="A">
+                                              <html:block type="variables_get" id="*SQBcFh;hgdP{Ie^~:+~">
+                                                <html:field name="VAR" id="WuqZ(;^TtAw=X%TxBc~A" variabletype="">RSI</html:field>
+                                              </html:block>
+                                            </html:value>
+                                            <html:value name="B">
+                                              <html:block type="math_number" id="39Zfpy,xQL[]%^6siTk4">
+                                                <html:field name="NUM">30</html:field>
+                                              </html:block>
+                                            </html:value>
+                                          </html:block>
+                                        </html:value>
+                                        <html:value name="B">
+                                          <html:block type="logic_operation" id="h3GF2VG$(8=YWAN;QwAu">
+                                            <html:field name="OP">AND</html:field>
+                                            <html:value name="A">
+                                              <html:block type="logic_compare" id="V8pVJwYI!7W|c^f6;1MN">
+                                                <html:field name="OP">LT</html:field>
+                                                <html:value name="A">
+                                                  <html:block type="tick" id="Qi3a]/Oai{]7=mKGz^@m" />
+                                                </html:value>
+                                                <html:value name="B">
+                                                  <html:block type="variables_get" id="^@{2[pM8;jv8!+ctIxYN">
+                                                    <html:field name="VAR" id="lzx0~Gt[).=D3HH-:@Hq" variabletype="">STOCH-30</html:field>
+                                                  </html:block>
+                                                </html:value>
+                                              </html:block>
+                                            </html:value>
+                                            <html:value name="B">
+                                              <html:block type="logic_compare" id="igKM~.HRj;m:T}nbmype">
+                                                <html:field name="OP">LT</html:field>
+                                                <html:value name="A">
+                                                  <html:block type="variables_get" id="~}VzH=!*Uya|xS4r9=r8">
+                                                    <html:field name="VAR" id="lzx0~Gt[).=D3HH-:@Hq" variabletype="">STOCH-30</html:field>
+                                                  </html:block>
+                                                </html:value>
+                                                <html:value name="B">
+                                                  <html:block type="variables_get" id="=w~@[vpdk]jE:a)RXXQ[">
+                                                    <html:field name="VAR" id="^Jm)?(EFDhSb/ZPPiU8@" variabletype="">STOCH-70</html:field>
+                                                  </html:block>
+                                                </html:value>
+                                              </html:block>
+                                            </html:value>
+                                          </html:block>
+                                        </html:value>
+                                      </html:block>
+                                    </html:value>
+                                    <html:statement name="DO0">
+                                      <html:block type="purchase" id="(6u#[d#GMivNg9VL@5Kd">
+                                        <html:field name="PURCHASE_LIST">PUT</html:field>
+                                      </html:block>
+                                    </html:statement>
+                                  </html:block>
+                                </html:next>
+                              </html:block>
+                            </html:next>
+                          </html:block>
+                        </html:next>
+                      </html:block>
+                    </html:next>
+                  </html:block>
+                </html:next>
+              </html:block>
+            </html:next>
+          </html:block>
+        </html:next>
+      </html:block>
+    </html:statement>
+  </html:block>
+  <html:block type="after_purchase" id="finish" x="14" y="1016">
+    <html:statement name="AFTERPURCHASE_STACK">
+      <html:block type="controls_if" id="/TP%I,hfU)^|c.|/3ndN">
+        <html:mutation else="1" />
+        <html:value name="IF0">
+          <html:block type="contract_check_result" id="!Ju)S0aU{UXQf0qHA6X,">
+            <html:field name="CHECK_RESULT">win</html:field>
+          </html:block>
+        </html:value>
+        <html:statement name="DO0">
+          <html:block type="notify" id="gHD9SF(^C:~$q@c/;(KP">
+            <html:field name="NOTIFICATION_TYPE">success</html:field>
+            <html:field name="NOTIFICATION_SOUND">silent</html:field>
+            <html:value name="MESSAGE">
+              <html:block type="text_join" id="]Je7[};kvx`BRACG:?(;">
+                <html:mutation items="2" />
+                <html:value name="ADD0">
+                  <html:block type="text" id="s/=(=W~@G6,IQ,b://B3">
+                    <html:field name="TEXT">Won:</html:field>
+                  </html:block>
+                </html:value>
+                <html:value name="ADD1">
+                  <html:block type="read_details" id="SXm{k(Ltcd0rel3iez82">
+                    <html:field name="DETAIL_INDEX">4</html:field>
+                  </html:block>
+                </html:value>
+              </html:block>
+            </html:value>
+            <html:next>
+              <html:block type="variables_set" id="!7vE(S.O$(Hp%A$z{Q)4">
+                <html:field name="VAR" id="1i4q,zqdJs--)bl5UdlM" variabletype="">Initial Amount</html:field>
+                <html:value name="VALUE">
+                  <html:block type="variables_get" id="xt{eOIX[E!rJ4}0f(|)w">
+                    <html:field name="VAR" id="[:*sc!{S6gRB/,L5Q9?)" variabletype="">Win Amount</html:field>
+                  </html:block>
+                </html:value>
+              </html:block>
+            </html:next>
+          </html:block>
+        </html:statement>
+        <html:statement name="ELSE">
+          <html:block type="notify" id="@^jo^p%_Dc9)/}ZVUN=q">
+            <html:field name="NOTIFICATION_TYPE">warn</html:field>
+            <html:field name="NOTIFICATION_SOUND">silent</html:field>
+            <html:value name="MESSAGE">
+              <html:block type="text_join" id="L!A5F7obJ6YDSU%sb~v$">
+                <html:mutation items="2" />
+                <html:value name="ADD0">
+                  <html:block type="text" id=":bct,J@#aZ1,ap7%$u;m">
+                    <html:field name="TEXT">Lost: </html:field>
+                  </html:block>
+                </html:value>
+                <html:value name="ADD1">
+                  <html:block type="math_single" id="Us=FXR=G20;r.vw#Qzx9">
+                    <html:field name="OP">ABS</html:field>
+                    <html:value name="NUM">
+                      <html:shadow type="math_number" id="GleSn`9j7Cm7/dqg}FIA">
+                        <html:field name="NUM">9</html:field>
+                      </html:shadow>
+                      <html:block type="read_details" id="6^U0{%K4N4+shx$i.^;H">
+                        <html:field name="DETAIL_INDEX">4</html:field>
+                      </html:block>
+                    </html:value>
+                  </html:block>
+                </html:value>
+              </html:block>
+            </html:value>
+            <html:next>
+              <html:block type="math_change" id="Lp7Sf;6}.+aaQK7u|qC,">
+                <html:field name="VAR" id="1i4q,zqdJs--)bl5UdlM" variabletype="">Initial Amount</html:field>
+                <html:value name="DELTA">
+                  <html:shadow type="math_number" id="N=Vo^MVz~/^(xt7Ag@8E">
+                    <html:field name="NUM">1</html:field>
+                  </html:shadow>
+                  <html:block type="math_arithmetic" id="eN7/Pe-C@6[cZuG=;sr|">
+                    <html:field name="OP">MULTIPLY</html:field>
+                    <html:value name="A">
+                      <html:shadow type="math_number" id="ka8n8|Dugz,q5FkUjs`7">
+                        <html:field name="NUM">1</html:field>
+                      </html:shadow>
+                      <html:block type="math_single" id="n#dZL(R~tbmwTs^YpY{n">
+                        <html:field name="OP">ABS</html:field>
+                        <html:value name="NUM">
+                          <html:shadow type="math_number" id="GleSn`9j7Cm7/dqg}FIA">
+                            <html:field name="NUM">9</html:field>
+                          </html:shadow>
+                          <html:block type="read_details" id="bV`6lc$_j`ElSi~fxG-e">
+                            <html:field name="DETAIL_INDEX">4</html:field>
+                          </html:block>
+                        </html:value>
+                      </html:block>
+                    </html:value>
+                    <html:value name="B">
+                      <html:shadow type="math_number" id="{JXdZCp2%s=sfO@yN:n}">
+                        <html:field name="NUM">1</html:field>
+                      </html:shadow>
+                      <html:block type="math_number" id="L2m6.74Wo}DL)X%A@uE}">
+                        <html:field name="NUM">1.1</html:field>
+                      </html:block>
+                    </html:value>
+                  </html:block>
+                </html:value>
+                <html:next>
+                  <html:block type="controls_if" id="THEX=3SJ9vM.fn6isSQX">
+                    <html:value name="IF0">
+                      <html:block type="logic_compare" id=")?vQl#~,J(1mnfNi]c|F">
+                        <html:field name="OP">GTE</html:field>
+                        <html:value name="A">
+                          <html:block type="math_single" id="AeT7xRW8;G`0dUU3G9Zu">
+                            <html:field name="OP">ABS</html:field>
+                            <html:value name="NUM">
+                              <html:shadow type="math_number" id="ft^DVzOH^GlSjzUC}@3c">
+                                <html:field name="NUM">9</html:field>
+                              </html:shadow>
+                              <html:block type="read_details" id="Dywmoc_eJ)3BDdpvZ+8%">
+                                <html:field name="DETAIL_INDEX">4</html:field>
+                              </html:block>
+                            </html:value>
+                          </html:block>
+                        </html:value>
+                        <html:value name="B">
+                          <html:block type="variables_get" id="IR(@Z1;/dK1a7*)koIlK">
+                            <html:field name="VAR" id=";$ZQf`P.{Nfj2%cf$U~+" variabletype="">Max Loss Amount</html:field>
+                          </html:block>
+                        </html:value>
+                      </html:block>
+                    </html:value>
+                    <html:statement name="DO0">
+                      <html:block type="variables_set" id="{Dp3Zh`qx3F{e%!zm[oF">
+                        <html:field name="VAR" id="1i4q,zqdJs--)bl5UdlM" variabletype="">Initial Amount</html:field>
+                        <html:value name="VALUE">
+                          <html:block type="variables_get" id="h:P1U@JR9*Miyg4^$hVa">
+                            <html:field name="VAR" id="[:*sc!{S6gRB/,L5Q9?)" variabletype="">Win Amount</html:field>
+                          </html:block>
+                        </html:value>
+                      </html:block>
+                    </html:statement>
+                  </html:block>
+                </html:next>
+              </html:block>
+            </html:next>
+          </html:block>
+        </html:statement>
+        <html:next>
+          <html:block type="notify" id="1)tW7}^o?Ym2qm8-qmdO">
+            <html:field name="NOTIFICATION_TYPE">info</html:field>
+            <html:field name="NOTIFICATION_SOUND">silent</html:field>
+            <html:value name="MESSAGE">
+              <html:block type="text_join" id="t]P+(Nqhmu!Tg.F7-CPr">
+                <html:mutation items="2" />
+                <html:value name="ADD0">
+                  <html:block type="text" id="7gm[}!($og`%Y,*D%j%;">
+                    <html:field name="TEXT">Total Profit: </html:field>
+                  </html:block>
+                </html:value>
+                <html:value name="ADD1">
+                  <html:block type="total_profit" id="|K4ymCMY8D%B0Pqg?9ad" />
+                </html:value>
+              </html:block>
+            </html:value>
+            <html:next>
+              <html:block type="controls_if" id="IuxXfH4y2;l}4;x^GXgv">
+                <html:mutation else="1" />
+                <html:value name="IF0">
+                  <html:block type="logic_compare" id="Qq=J(YADm#qJRtdnM78y">
+                    <html:field name="OP">LT</html:field>
+                    <html:value name="A">
+                      <html:block type="total_profit" id="W{-s|:=aTg]?pW@/|k~#" />
+                    </html:value>
+                    <html:value name="B">
+                      <html:block type="variables_get" id="~h}JcSkFo$2+DvY7Z(i1">
+                        <html:field name="VAR" id="pt@?n}1RFe6_3h7^k:LX" variabletype="">Expected Profit</html:field>
+                      </html:block>
+                    </html:value>
+                  </html:block>
+                </html:value>
+                <html:statement name="DO0">
+                  <html:block type="trade_again" id=";?v.`3czHAz0=p.kKdO$" />
+                </html:statement>
+                <html:statement name="ELSE">
+                  <html:block type="text_print" id="{#=T-jZoV^~Hg2fDop#P">
+                    <html:value name="TEXT">
+                      <html:shadow type="text" id="kqlrIk.GO.^}hI,PoUV)">
+                        <html:field name="TEXT">abc</html:field>
+                      </html:shadow>
+                      <html:block type="text_join" id="LlYXC#rV|?[e@:Hp=,j=">
+                        <html:mutation items="2" />
+                        <html:value name="ADD0">
+                          <html:block type="text" id="e{xh9Rs1RU:W_h6hSy/1">
+                            <html:field name="TEXT">Done! Total profit: </html:field>
+                          </html:block>
+                        </html:value>
+                        <html:value name="ADD1">
+                          <html:block type="total_profit" id="TPWF3d]yS|:~*^VVyv]X" />
+                        </html:value>
+                      </html:block>
+                    </html:value>
+                  </html:block>
+                </html:statement>
+              </html:block>
+            </html:next>
+          </html:block>
+        </html:next>
+      </html:block>
+    </html:statement>
+  </html:block>
+</html:xml>
